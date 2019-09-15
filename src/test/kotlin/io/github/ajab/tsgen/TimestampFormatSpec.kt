@@ -1,7 +1,8 @@
 package io.github.ajab.tsgen
 
 import io.github.ajab.tsgen.config.TimestampFormat
-import io.kotlintest.Spec
+import io.kotlintest.TestCase
+import io.kotlintest.TestResult
 import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 import java.time.Instant
@@ -13,10 +14,16 @@ class TimestampFormatSpec : ShouldSpec() {
 
     private val generator = TimestampGenerator
 
-    override fun beforeSpec(spec: Spec) {
-        super.beforeSpec(spec)
+    override fun beforeTest(testCase: TestCase) {
+        super.beforeTest(testCase)
 
         generator.setFixedTime(Instant.from(ZonedDateTime.of(2019, Month.MARCH.value, 18, 10, 30, 20, 1234567, ZoneOffset.UTC)))
+    }
+
+    override fun afterTest(testCase: TestCase, result: TestResult) {
+        super.afterTest(testCase, result)
+
+        generator.setFixedTime(null)
     }
 
     init {

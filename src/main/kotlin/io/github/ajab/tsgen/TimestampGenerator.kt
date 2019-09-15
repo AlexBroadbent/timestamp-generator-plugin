@@ -16,7 +16,7 @@ object TimestampGenerator {
     fun generate(settings: TimestampGeneratorSettings): String = settings.format.formatter.format(getCurrentTime())
 
     @VisibleForTesting
-    fun setFixedTime(fixedTime: Instant) {
+    fun setFixedTime(fixedTime: Instant?) {
         this.fixedTime = fixedTime
     }
 
