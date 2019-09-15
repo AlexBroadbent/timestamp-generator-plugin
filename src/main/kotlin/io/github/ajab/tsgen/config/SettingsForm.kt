@@ -4,13 +4,13 @@ import com.intellij.openapi.ui.ComboBox
 import io.github.ajab.tsgen.TimestampGenerator
 import javax.swing.*
 
-class ConfigForm {
+class SettingsForm {
+
+    private val settings = TimestampGeneratorSettings.instance
 
     private var panel: JPanel? = null
     private var previewLabel: JLabel? = null
     private var format: JComboBox<TimestampFormat>? = null
-
-    private val settings = TimestampGeneratorSettings.instance
 
     init {
         loadSettings()
@@ -22,9 +22,13 @@ class ConfigForm {
     fun loadSettings() {
         format?.selectedItem = settings.format
 
-        listOfNotNull(
+        sequenceOf(
             format
-        ).forEach { it.addItemListener { updatePreviewLabel() } }
+        ).filterNotNull().forEach {
+            it.addItemListener {
+                updatePreviewLabel()
+            }
+        }
 
         updatePreviewLabel()
     }
@@ -41,6 +45,7 @@ class ConfigForm {
     private fun updatePreviewLabel() {
         val previewSettings = TimestampGeneratorSettings()
         applyToConfigForm(previewSettings)
+
         previewLabel?.text = TimestampGenerator.generate(settings)
     }
 

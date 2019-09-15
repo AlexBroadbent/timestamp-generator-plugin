@@ -1,0 +1,45 @@
+language: java
+install: true
+jdk:
+  - openjdk8
+
+before_script:
+  - chmod -R ug+x .travis
+
+jobs:
+  include:
+    - stage: test
+      name: Build
+      script: ".travis/build.sh"
+    - stage: deploy
+      name: Deploy Beta
+      if: tag IS present AND tag =~ ^(\d)+\.(\d)+(\.(\d)+)*(-[\w]+)*-BETA(\d)*$
+      script: ".travis/deploy.sh"
+    - stage: deploy
+      name: Deploy Release
+      if: tag IS present AND tag =~ ^(\d)+\.(\d)+(\.(\d)+)*(-[\w]+)*$ AND NOT (tag =~
+        ^(\d)+\.(\d)+(\.(\d)+)*(-[\w]+)*-BETA(\d)*$)
+      script: ".travis/deploy.sh"
+      deploy:
+        provider: releases
+        api_key:
+          secure: p3dP22IICGliOZZjDLhDnjNnO8hadXAkIqz1aLtC7f3nxHNCmz2ANttFmGJW3DOuViecj81BtxeqsyA04Es1m4mhVpI2OU8Tq1KM3ktCdQB/gtE80e3Q0pXaSCQC/hCHSkFGKZ0M3R4et+4GWC0X/vRe1DSi9gpjQOFIzgH2SpxRCf3Sa4K6IUr9C+hd+WOOUjWd/x63JhrM06CE6HlxIvGEO8qO6py2HEci0gW7Ytl8S4sN1HK7lEtpS5ouUzbbGt/QPJShUkvUdCUY3sWmrf5Hx0YAfCq37U+orJkfRJDjzh+RadHE/lMf0L+JJIdR+k/o5rwNBCp7BtbimCNCv2Enao9pZkBODxgOcrMc3Wik4UWDr56I3LgF/5Z0LCgDfDPBCfxTah6jPUkRJ9AbSYinvlTa4qiPuCaMkn/VUNqvaP4Ma48M2I+55A8XZUNPDEH4jfsUqaqKVvbBB0Ix+OvsPYzg2ayvdWl4qO0oVow7cK/A/9nCg4GSI9/mQPebtEEUOl5t7287i4sdm6lG0esXWbdfL0fvsr6feojfWN0IVaofkj0/Z7j6HbwR/I77eFnyNbrdZwO4iSO161wkTHyJMaAIuRRCsNUlJ6GCNisQF0Oq3fGHS7LbyRt8i/1tR7dswyYtu3X+VWPGLTCAvGIV9G6FKF/zSk00ICs3RCQ=
+        file_glob: true
+        file:
+          - "$TRAVIS_BUILD_DIR/build/libs/*"
+        body: Release of $TRAVIS_TAG
+        skip_cleanup: true
+        draft: true
+        on:
+          repo: ajab/timestamp-generator-plugin
+          tags: true
+
+before_cache:
+  - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+  - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+
+cache:
+  directories:
+    - "$HOME/.gradle/caches/"
+    - "$HOME/.gradle/wrapper/"
+

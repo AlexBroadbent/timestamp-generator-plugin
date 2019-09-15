@@ -22,7 +22,7 @@ class GenerateToClipboardAction : AnAction() {
             val statusBar = WindowManager.getInstance().getStatusBar(it)
 
             JBPopupFactory.getInstance()
-                .createHtmlTextBalloonBuilder("", MessageType.INFO, null)
+                .createHtmlTextBalloonBuilder("$timestamp copied to clipboard", MessageType.INFO, null)
                 .setFadeoutTime(5000)
                 .createBalloon()
                 .show(RelativePoint.getCenterOf(statusBar.component), Balloon.Position.atRight)
