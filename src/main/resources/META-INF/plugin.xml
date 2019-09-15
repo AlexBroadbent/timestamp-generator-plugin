@@ -1,0 +1,52 @@
+<idea-plugin>
+    <id>io.ajab.timestamp-generator-plugin</id>
+    <name>Timestamp Generator</name>
+    <version>0.1.0</version>
+    <vendor email="alexbroadbent@outlook.com" url="https://github.com/ajab">Alexander Broadbent</vendor>
+
+    <description><![CDATA[
+      A timestamp generator.<br/>
+      <br/>
+      For example : <em>2019-03-18T11:30:00.000Z</em>.<br/>
+      <br/>
+      Available actions :
+      <ul>
+        <li>Generate Timestamp</li>
+        <li>Generate Timestamp to clipboard</li>
+      </ul>
+    ]]></description>
+
+    <change-notes><![CDATA[
+        <b>Changes in version 0.1.0:</b>
+        <ul>
+            <li>Initial implementation</li>
+        </ul>
+        ]]>
+    </change-notes>
+
+    <depends>com.intellij.modules.lang</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <applicationConfigurable instance="io.github.ajab.tsgen.config.ConfigConfigurable"/>
+
+        <applicationService serviceImplementation="io.github.ajab.tsgen.config.TimestampGeneratorSettings"/>
+    </extensions>
+
+    <actions>
+        <action id="tsgen.insert"
+                class="io.github.ajab.tsgen.GenerateToEditorAction"
+                text="Current Timestamp"
+                description="Generate the current timestamp">
+            <add-to-group group-id="GenerateGroup" anchor="last"/>
+            <keyboard-shortcut first-keystroke="shift meta alt T" keymap="$default"/>
+        </action>
+
+        <action id="tsgen.copy"
+                class="io.github.ajab.tsgen.GenerateToClipboardAction"
+                text="Copy Current Timestamp"
+                description="Copy the current timestamp to the clipboard">
+            <add-to-group group-id="GenerateGroup"/>
+            <keyboard-shortcut first-keystroke="shift meta alt C" keymap="$default"/>
+        </action>
+    </actions>
+</idea-plugin>
