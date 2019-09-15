@@ -6,8 +6,13 @@ import com.intellij.openapi.components.State
 import com.intellij.openapi.components.Storage
 import com.intellij.util.xmlb.XmlSerializerUtil
 
-@State(name = "Settings", storages = [(Storage("timestamp_generator.xml"))])
+@State(name = "TimestampSettings", storages = [(Storage("timestamp_generator.xml"))])
 class TimestampGeneratorSettings : PersistentStateComponent<TimestampGeneratorSettings> {
+
+    companion object {
+        val instance: TimestampGeneratorSettings
+            get() = ServiceManager.getService(TimestampGeneratorSettings::class.java)
+    }
 
     var format: TimestampFormat = TimestampFormat.ISO_8601
 
@@ -15,10 +20,5 @@ class TimestampGeneratorSettings : PersistentStateComponent<TimestampGeneratorSe
 
     override fun loadState(state: TimestampGeneratorSettings) {
         XmlSerializerUtil.copyBean(state, this)
-    }
-
-    companion object {
-        val instance: TimestampGeneratorSettings
-            get() = ServiceManager.getService(TimestampGeneratorSettings::class.java)
     }
 }

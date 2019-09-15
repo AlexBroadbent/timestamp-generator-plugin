@@ -5,28 +5,28 @@ import javax.swing.JComponent
 
 class ConfigConfigurable : Configurable {
 
-    private var configForm: ConfigForm? = null
+    private var settingsForm: SettingsForm? = null
 
     override fun createComponent(): JComponent? {
-        configForm = configForm ?: ConfigForm()
-        return configForm?.component()
+        settingsForm = settingsForm ?: SettingsForm()
+        return settingsForm?.component()
     }
 
     override fun isModified(): Boolean {
-        return configForm?.isModified ?: false
+        return settingsForm?.isModified ?: false
     }
 
     override fun apply() {
         val settings = TimestampGeneratorSettings.instance
-        configForm?.applyToConfigForm(settings)
+        settingsForm?.applyToConfigForm(settings)
     }
 
     override fun reset() {
-        configForm?.loadSettings()
+        settingsForm?.loadSettings()
     }
 
     override fun disposeUIResources() {
-        configForm = null
+        settingsForm = null
     }
 
     override fun getDisplayName(): String = "Timestamp Generator"
