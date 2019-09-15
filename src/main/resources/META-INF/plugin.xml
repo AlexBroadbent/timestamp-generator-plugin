@@ -1,28 +1,49 @@
 <idea-plugin>
     <id>io.ajab.timestamp-generator-plugin</id>
     <name>Timestamp Generator</name>
-    <version>0.1.0</version>
+    <version>0.1.2</version>
     <vendor email="alexbroadbent@outlook.com" url="https://github.com/ajab">Alexander Broadbent</vendor>
 
     <description><![CDATA[
       A timestamp generator.<br/>
       <br/>
-      For example : <em>2019-03-18T11:30:00.000Z</em>.<br/>
+      For example: <em>2019-03-18T11:30:00.000Z</em>.<br/>
       <br/>
-      Available actions :
+      Available actions:
       <ul>
         <li>Generate Timestamp</li>
         <li>Generate Timestamp to clipboard</li>
       </ul>
+      <br/>
+      Available formats:
+      <ul>
+        <li>ISO 8601</li>
+        <li>ISO Local Date</li>
+        <li>ISO Local Time</li>
+        <li>ISO Local Date Time</li>
+        <li>ISO Instant</li>
+        <li>RFC 11123 Date Time</li>
+        <li>ISO Zoned Date Time</li>
+      </ul>
     ]]></description>
 
     <change-notes><![CDATA[
+        <b>Changes in version 0.1.2:</b>
+        <ul>
+            <li>Support later versions of IDEA</li>
+        </ul>
+        <b>Changes in version 0.1.1:</b>
+        <ul>
+            <li>Various upgrades and bugfixes</li>
+        </ul>
         <b>Changes in version 0.1.0:</b>
         <ul>
             <li>Initial implementation</li>
         </ul>
         ]]>
     </change-notes>
+
+    <idea-version since-build="143.0"/>
 
     <depends>com.intellij.modules.lang</depends>
 
