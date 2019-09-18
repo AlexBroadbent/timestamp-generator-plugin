@@ -8,7 +8,7 @@ plugins {
 }
 
 group = "io.github.ajab"
-version = "0.1.2"
+version = "0.1.3"
 
 repositories {
     mavenCentral()
@@ -23,7 +23,7 @@ dependencies {
 }
 
 intellij {
-    version = "2019.1"
+    version = "2019.2"
     pluginName = "Timestamp Generator"
 }
 
