@@ -1,3 +1,4 @@
+import org.gradle.api.tasks.testing.logging.TestLogEvent
 import org.jetbrains.intellij.tasks.PublishTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
@@ -35,7 +36,7 @@ val test by tasks.getting(Test::class) {
     useJUnitPlatform()
 
     testLogging {
-        events("passed", "skipped", "failed")
+        events(TestLogEvent.PASSED, TestLogEvent.SKIPPED, TestLogEvent.FAILED)
     }
 }
 

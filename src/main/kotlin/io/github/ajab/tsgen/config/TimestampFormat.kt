@@ -2,7 +2,7 @@ package io.github.ajab.tsgen.config
 
 import java.time.ZoneOffset
 import java.time.format.DateTimeFormatter
-import java.util.*
+import java.util.Locale
 
 enum class TimestampFormat(
     val title: String,
