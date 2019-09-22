@@ -21,5 +21,4 @@ object TimestampGenerator {
     }
 
     private fun getCurrentTime() = fixedTime ?: Instant.now()
-
 }

@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>io.ajab.timestamp-generator-plugin</id>
     <name>Timestamp Generator</name>
-    <version>0.1.2</version>
+    <version>0.1.3</version>
     <vendor email="alexbroadbent@outlook.com" url="https://github.com/ajab">Alexander Broadbent</vendor>
 
     <description><![CDATA[
@@ -28,6 +28,10 @@
     ]]></description>
 
     <change-notes><![CDATA[
+        <b>Changes in version 0.1.3:</b>
+        <ul>
+            <li>Support any version</li>
+        </ul>
         <b>Changes in version 0.1.2:</b>
         <ul>
             <li>Support later versions of IDEA</li>

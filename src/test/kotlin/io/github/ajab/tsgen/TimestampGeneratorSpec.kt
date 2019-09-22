@@ -50,5 +50,4 @@ class TimestampGeneratorSpec : ShouldSpec() {
         settings.format = format
         return settings
     }
-
 }
