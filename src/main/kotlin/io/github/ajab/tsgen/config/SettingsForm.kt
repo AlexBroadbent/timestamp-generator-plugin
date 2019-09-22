@@ -2,11 +2,11 @@ package io.github.ajab.tsgen.config
 
 import com.intellij.openapi.ui.ComboBox
 import io.github.ajab.tsgen.TimestampGenerator
-import javax.swing.JPanel
-import javax.swing.JLabel
+import javax.swing.DefaultComboBoxModel
 import javax.swing.JComboBox
 import javax.swing.JComponent
-import javax.swing.DefaultComboBoxModel
+import javax.swing.JLabel
+import javax.swing.JPanel
 
 class SettingsForm {
 
