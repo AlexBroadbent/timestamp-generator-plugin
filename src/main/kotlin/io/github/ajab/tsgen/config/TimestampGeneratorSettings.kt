@@ -18,7 +18,7 @@ class TimestampGeneratorSettings : PersistentStateComponent<TimestampGeneratorSe
     }
 
     // default value
-    var format: TimestampFormat = TimestampFormat.ISO_8601
+    var format: TimestampFormat = TimestampFormatMap.ISO_8601
 
     override fun getState(): TimestampGeneratorSettings = this
 
@@ -26,7 +26,7 @@ class TimestampGeneratorSettings : PersistentStateComponent<TimestampGeneratorSe
         XmlSerializerUtil.copyBean(state, this)
     }
 
-    override fun title(): String = format.title
+    override fun title(): String = format.title.title
 
-    override fun formatter(): DateTimeFormatter = format.formatter
+    override fun formatter(): DateTimeFormatter = format.format
 }

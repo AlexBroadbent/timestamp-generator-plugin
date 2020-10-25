@@ -1,6 +1,7 @@
 package io.github.ajab.tsgen.config
 
 import com.intellij.openapi.options.Configurable
+import org.jetbrains.annotations.Nls
 import javax.swing.JComponent
 
 class ConfigConfigurable : Configurable {
@@ -18,7 +19,7 @@ class ConfigConfigurable : Configurable {
 
     override fun apply() {
         val settings = TimestampGeneratorSettings.instance
-        settingsForm?.applyToConfigForm(settings)
+        settingsForm?.applyConfigFormToSettings(settings)
     }
 
     override fun reset() {
@@ -29,5 +30,6 @@ class ConfigConfigurable : Configurable {
         settingsForm = null
     }
 
+    @Nls
     override fun getDisplayName(): String = "Timestamp Generator"
 }

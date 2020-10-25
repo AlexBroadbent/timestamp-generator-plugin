@@ -2,6 +2,7 @@ package io.github.ajab.tsgen.config
 
 import com.intellij.openapi.ui.ComboBox
 import io.github.ajab.tsgen.TimestampGenerator
+import java.time.Instant
 import javax.swing.DefaultComboBoxModel
 import javax.swing.JComboBox
 import javax.swing.JComponent
@@ -10,26 +11,24 @@ import javax.swing.JPanel
 
 class SettingsForm {
 
+    private val previewTimestamp = Instant.ofEpochSecond(1610884800) // 2021-01-17T12:00:00.000Z
     private val settings = TimestampGeneratorSettings.instance
 
     private var panel: JPanel? = null
     private var previewLabel: JLabel? = null
-    private var format: JComboBox<TimestampFormat>? = null
+    private var formatComboBox: JComboBox<TimestampFormatTitle>? = null
 
     init {
         loadSettings()
     }
 
-    val isModified: Boolean
-        get() = getSelectedFormat() != settings.format
-
     fun loadSettings() {
-        format?.selectedItem = settings.format
+        formatComboBox?.selectedItem = settings.format.title
 
         sequenceOf(
-            format
+            formatComboBox
         ).filterNotNull().forEach {
-            it.addItemListener {
+            it.addActionListener {
                 updatePreviewLabel()
             }
         }
@@ -37,23 +36,27 @@ class SettingsForm {
         updatePreviewLabel()
     }
 
-    fun applyToConfigForm(settings: TimestampGeneratorSettings) {
+    private fun updatePreviewLabel() {
+        val previewSettings = TimestampGeneratorSettings()
+        applyConfigFormToSettings(previewSettings)
+        previewLabel?.text = TimestampGenerator.generateTimestamp(instant = previewTimestamp, settings = previewSettings)
+    }
+
+    fun applyConfigFormToSettings(settings: TimestampGeneratorSettings) {
         settings.format = getSelectedFormat()
     }
 
     fun component(): JComponent? = panel
 
-    private fun getSelectedFormat(): TimestampFormat =
-        format?.selectedItem as? TimestampFormat ?: TimestampFormat.ISO_8601
-
-    private fun updatePreviewLabel() {
-        val previewSettings = TimestampGeneratorSettings()
-        applyToConfigForm(previewSettings)
-
-        previewLabel?.text = TimestampGenerator.generateTimestamp(settings = settings)
-    }
-
     private fun createUIComponents() {
-        format = ComboBox(DefaultComboBoxModel<TimestampFormat>(TimestampFormat.values()))
+        formatComboBox = ComboBox(DefaultComboBoxModel<TimestampFormatTitle>(TimestampFormatTitle.values()))
     }
+
+    private fun getSelectedFormat(): TimestampFormat =
+        TimestampFormatMap.getFormat(
+            formatComboBox?.selectedItem as? TimestampFormatTitle ?: TimestampFormatTitle.ISO_8601
+        )
+
+    val isModified: Boolean
+        get() = getSelectedFormat() != settings.format
 }
