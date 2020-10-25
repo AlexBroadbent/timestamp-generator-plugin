@@ -1,6 +1,6 @@
-package io.github.ajab.tsgen
+package io.github.alexbroadbent.tsgen
 
-import io.github.ajab.tsgen.config.TimestampGeneratorSettings
+import io.github.alexbroadbent.tsgen.config.TimestampGeneratorSettings
 import java.time.Instant
 
 object TimestampGenerator {

@@ -1,4 +1,4 @@
-package io.github.ajab.tsgen.config
+package io.github.alexbroadbent.tsgen.config
 
 import com.intellij.openapi.options.Configurable
 import org.jetbrains.annotations.Nls

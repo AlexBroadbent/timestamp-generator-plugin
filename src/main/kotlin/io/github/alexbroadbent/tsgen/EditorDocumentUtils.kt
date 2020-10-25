@@ -1,4 +1,4 @@
-package io.github.ajab.tsgen
+package io.github.alexbroadbent.tsgen
 
 import com.intellij.openapi.editor.Caret
 

@@ -1,4 +1,4 @@
-package io.github.ajab.tsgen.config
+package io.github.alexbroadbent.tsgen.config
 
 import java.time.ZoneOffset
 import java.time.format.DateTimeFormatter

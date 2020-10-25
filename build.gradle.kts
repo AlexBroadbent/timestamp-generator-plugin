@@ -8,7 +8,7 @@ plugins {
     id("org.jetbrains.intellij") version "0.4.8"
 }
 
-group = "io.github.ajab"
+group = "io.github.alexbroadbent"
 version = "0.1.3"
 
 repositories {

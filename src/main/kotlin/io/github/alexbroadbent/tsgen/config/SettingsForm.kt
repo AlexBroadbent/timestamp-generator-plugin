@@ -1,7 +1,7 @@
-package io.github.ajab.tsgen.config
+package io.github.alexbroadbent.tsgen.config
 
 import com.intellij.openapi.ui.ComboBox
-import io.github.ajab.tsgen.TimestampGenerator
+import io.github.alexbroadbent.tsgen.TimestampGenerator
 import java.time.Instant
 import javax.swing.DefaultComboBoxModel
 import javax.swing.JComboBox

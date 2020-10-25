@@ -1,6 +1,6 @@
-package io.github.ajab.tsgen
+package io.github.alexbroadbent.tsgen
 
-import io.github.ajab.tsgen.config.TimestampFormatTitle
+import io.github.alexbroadbent.tsgen.config.TimestampFormatTitle
 import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 import java.time.Instant
@@ -40,5 +40,5 @@ class TimestampFormatSpec : ShouldSpec() {
         }
     }
 
-    private fun generate(title: TimestampFormatTitle) = generator.generateTimestamp(fixedTime, settings(title))
+    private fun generate(title: TimestampFormatTitle) = TimestampGenerator.generateTimestamp(fixedTime, settings(title))
 }

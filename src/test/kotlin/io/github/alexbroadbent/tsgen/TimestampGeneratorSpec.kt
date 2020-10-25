@@ -1,6 +1,6 @@
-package io.github.ajab.tsgen
+package io.github.alexbroadbent.tsgen
 
-import io.github.ajab.tsgen.config.TimestampFormatTitle
+import io.github.alexbroadbent.tsgen.config.TimestampFormatTitle
 import io.kotlintest.IsolationMode
 import io.kotlintest.TestCaseOrder
 import io.kotlintest.matchers.numerics.shouldBeInRange

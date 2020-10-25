@@ -31,7 +31,7 @@ jobs:
         skip_cleanup: true
         draft: true
         on:
-          repo: ajab/timestamp-generator-plugin
+          repo: AlexBroadbent/timestamp-generator-plugin
           tags: true
 
 before_cache:
