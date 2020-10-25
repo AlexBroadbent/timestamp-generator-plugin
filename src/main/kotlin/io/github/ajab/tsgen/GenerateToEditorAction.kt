@@ -17,7 +17,7 @@ class GenerateToEditorAction : AnAction() {
 
         WriteCommandAction.runWriteCommandAction(project) {
             editor.caretModel.allCarets.forEach {
-                EditorDocumentUtils.insertTextAtCaret(it, TimestampGenerator.generate())
+                EditorDocumentUtils.insertTextAtCaret(it, TimestampGenerator.generateTimestamp())
             }
         }
     }

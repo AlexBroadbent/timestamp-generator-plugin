@@ -14,7 +14,7 @@ import com.intellij.util.ui.TextTransferable
 class GenerateToClipboardAction : AnAction() {
 
     override fun actionPerformed(event: AnActionEvent) {
-        val timestamp = TimestampGenerator.generate()
+        val timestamp = TimestampGenerator.generateTimestamp()
 
         CopyPasteManager.getInstance().setContents(TextTransferable(timestamp))
 

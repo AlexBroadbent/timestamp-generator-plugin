@@ -1,7 +1,6 @@
 package io.github.ajab.tsgen
 
 import io.github.ajab.tsgen.config.TimestampFormat
-import io.github.ajab.tsgen.config.TimestampGeneratorSettings
 import io.kotlintest.IsolationMode
 import io.kotlintest.TestCaseOrder
 import io.kotlintest.matchers.numerics.shouldBeInRange
@@ -17,7 +16,7 @@ class TimestampGeneratorSpec : ShouldSpec() {
         "Check generated timestamp" {
             should("use the current time") {
                 val before = Instant.now().toEpochMilli()
-                val timestamp = TimestampGenerator.generate()
+                val timestamp = TimestampGenerator.generateTimestamp(settings = settings())
                 val after = Instant.now().toEpochMilli()
 
                 Instant.parse(timestamp).toEpochMilli() shouldBeInRange (before..after)
@@ -26,7 +25,7 @@ class TimestampGeneratorSpec : ShouldSpec() {
                 val format = TimestampFormat.ISO_8601
 
                 val before = Instant.now().toEpochMilli()
-                val timestamp = TimestampGenerator.generate(format = format)
+                val timestamp = TimestampGenerator.generateTimestamp(settings = settings(format))
                 val after = Instant.now().toEpochMilli()
 
                 Instant.parse(timestamp).toEpochMilli() shouldBeInRange (before..after)
@@ -35,19 +34,11 @@ class TimestampGeneratorSpec : ShouldSpec() {
                 val settings = settings(format = TimestampFormat.ISO_8601)
 
                 val before = Instant.now().toEpochMilli()
-                val timestamp = TimestampGenerator.generate(settings = settings)
+                val timestamp = TimestampGenerator.generateTimestamp(settings = settings)
                 val after = Instant.now().toEpochMilli()
 
                 Instant.parse(timestamp).toEpochMilli() shouldBeInRange (before..after)
             }
         }
-    }
-
-    private fun settings(
-        format: TimestampFormat = TimestampFormat.ISO_8601
-    ): TimestampGeneratorSettings {
-        val settings = TimestampGeneratorSettings()
-        settings.format = format
-        return settings
     }
 }

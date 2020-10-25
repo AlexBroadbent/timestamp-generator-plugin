@@ -50,7 +50,7 @@ class SettingsForm {
         val previewSettings = TimestampGeneratorSettings()
         applyToConfigForm(previewSettings)
 
-        previewLabel?.text = TimestampGenerator.generate(settings)
+        previewLabel?.text = TimestampGenerator.generateTimestamp(settings = settings)
     }
 
     private fun createUIComponents() {
