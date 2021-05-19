@@ -7,6 +7,7 @@ import java.time.Instant
 import java.time.Month
 import java.time.ZoneOffset
 import java.time.ZonedDateTime
+import java.util.*
 
 class TimestampFormatSpec : ShouldSpec() {
 
@@ -15,6 +16,7 @@ class TimestampFormatSpec : ShouldSpec() {
     private val generator = TimestampGenerator
 
     init {
+        TimeZone.setDefault(TimeZone.getTimeZone("GMT+7:00"))
         "Check formatting" {
             should("cover ISO 8601 format") {
                 generate(TimestampFormatTitle.ISO_8601) shouldBe "2019-03-18T10:30:20.001234567Z"
@@ -26,10 +28,10 @@ class TimestampFormatSpec : ShouldSpec() {
                 generate(TimestampFormatTitle.ISO_LOCAL_DATE) shouldBe "2019-03-18"
             }
             should("cover ISO Local Time format") {
-                generate(TimestampFormatTitle.ISO_LOCAL_TIME) shouldBe "10:30:20.001234567"
+                generate(TimestampFormatTitle.ISO_LOCAL_TIME) shouldBe "17:30:20.001234567"
             }
             should("cover ISO Local DateTime format") {
-                generate(TimestampFormatTitle.ISO_LOCAL_DATE_TIME) shouldBe "2019-03-18T10:30:20.001234567"
+                generate(TimestampFormatTitle.ISO_LOCAL_DATE_TIME) shouldBe "2019-03-18T17:30:20.001234567"
             }
             should("cover ISO Zoned Date Time format") {
                 generate(TimestampFormatTitle.ISO_ZONED_DATE_TIME) shouldBe "2019-03-18T10:30:20.001234567Z"
