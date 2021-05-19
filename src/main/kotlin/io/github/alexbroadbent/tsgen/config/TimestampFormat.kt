@@ -1,5 +1,6 @@
 package io.github.alexbroadbent.tsgen.config
 
+import java.time.ZoneId
 import java.time.ZoneOffset
 import java.time.format.DateTimeFormatter
 import java.util.Locale
@@ -15,9 +16,9 @@ object TimestampFormatMap {
 
     private val map: Map<TimestampFormatTitle, DateTimeFormatter> = mapOf(
         TimestampFormatTitle.ISO_8601 to DateTimeFormatter.ISO_DATE_TIME.addLocaleAndZone(),
-        TimestampFormatTitle.ISO_LOCAL_DATE to DateTimeFormatter.ISO_LOCAL_DATE.addLocaleAndZone(),
-        TimestampFormatTitle.ISO_LOCAL_TIME to DateTimeFormatter.ISO_LOCAL_TIME.addLocaleAndZone(),
-        TimestampFormatTitle.ISO_LOCAL_DATE_TIME to DateTimeFormatter.ISO_LOCAL_DATE_TIME.addLocaleAndZone(),
+        TimestampFormatTitle.ISO_LOCAL_DATE to DateTimeFormatter.ISO_LOCAL_DATE.addLocaleAndDefaultZone(),
+        TimestampFormatTitle.ISO_LOCAL_TIME to DateTimeFormatter.ISO_LOCAL_TIME.addLocaleAndDefaultZone(),
+        TimestampFormatTitle.ISO_LOCAL_DATE_TIME to DateTimeFormatter.ISO_LOCAL_DATE_TIME.addLocaleAndDefaultZone(),
         TimestampFormatTitle.ISO_INSTANT to DateTimeFormatter.ISO_INSTANT.addLocaleAndZone(),
         TimestampFormatTitle.RFC_1123_DATE_TIME to DateTimeFormatter.ISO_INSTANT.addLocaleAndZone(),
         TimestampFormatTitle.ISO_ZONED_DATE_TIME to DateTimeFormatter.ISO_ZONED_DATE_TIME.addLocaleAndZone()
@@ -28,6 +29,7 @@ object TimestampFormatMap {
 }
 
 private fun DateTimeFormatter.addLocaleAndZone() = this.withLocale(Locale.UK).withZone(ZoneOffset.UTC)
+private fun DateTimeFormatter.addLocaleAndDefaultZone() = this.withLocale(Locale.UK).withZone(ZoneId.systemDefault())
 
 enum class TimestampFormatTitle(val title: String) {
     ISO_8601("ISO 8601"),
