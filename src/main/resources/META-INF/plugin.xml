@@ -1,8 +1,8 @@
 <idea-plugin>
     <id>io.github.alexbroadbent.timestamp-generator-plugin</id>
     <name>Timestamp Generator</name>
-    <version>0.1.4</version>
-    <vendor email="alexbroadbent@outlook.com" url="https://github.com/AlexBroadbent">Alexander Broadbent</vendor>
+    <version>0.1.5</version>
+    <vendor email="hello@abroadbent.com" url="https://github.com/AlexBroadbent">Alexander Broadbent</vendor>
 
     <description><![CDATA[
       A timestamp generator.<br/>
@@ -28,6 +28,10 @@
     ]]></description>
 
     <change-notes><![CDATA[
+        <b>Changes in version 0.1.5:</b>
+        <ul>
+            <li>Update versions and dependencies</li>
+        </ul>
         <b>Changes in version 0.1.4:</b>
         <ul>
             <li>Fix broken preview in settings</li>
