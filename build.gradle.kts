@@ -1,3 +1,4 @@
+import org.gradle.api.tasks.testing.logging.TestLogEvent
 import org.jetbrains.intellij.tasks.PublishPluginTask
 
 plugins {
@@ -33,6 +34,10 @@ tasks {
 
     test {
         useJUnitPlatform()
+
+        testLogging {
+            events(TestLogEvent.PASSED, TestLogEvent.FAILED, TestLogEvent.SKIPPED)
+        }
     }
 
     withType<PublishPluginTask> {
