@@ -1,11 +1,11 @@
-import org.gradle.api.tasks.testing.logging.TestLogEvent
-import org.jetbrains.intellij.tasks.PublishTask
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
+import org.jetbrains.intellij.tasks.PublishPluginTask
 
 plugins {
     idea
-    kotlin("jvm") version "1.3.31"
-    id("org.jetbrains.intellij") version "0.4.8"
+    kotlin("jvm") version "1.6.21"
+    id("org.jetbrains.intellij") version "1.6.0"
+    id("org.jlleitschuh.gradle.ktlint") version "10.3.0"
 }
 
 group = "io.github.alexbroadbent"
@@ -16,40 +16,37 @@ repositories {
 }
 
 dependencies {
-    implementation("org.apache.logging.log4j:log4j-1.2-api:2.12.1")
+    implementation("org.apache.logging.log4j:log4j-1.2-api:2.17.2")
 
-    testImplementation("io.kotlintest:kotlintest-runner-junit5:3.3.2")
+    testImplementation("io.kotest:kotest-runner-junit5:5.3.0")
 }
 
 intellij {
-    version = "IC-2018.3"
-    pluginName = "Timestamp Generator"
-    updateSinceUntilBuild = false
+    version.set("IC-2018.3")
+    pluginName.set("Timestamp Generator")
+    updateSinceUntilBuild.set(false)
 }
 
-tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = "1.8"
-}
+tasks {
+    compileKotlin {
+        kotlinOptions.jvmTarget = JavaVersion.VERSION_11.toString()
+    }
 
-val test by tasks.getting(Test::class) {
-    useJUnitPlatform()
+    test {
+        useJUnitPlatform()
+    }
 
-    testLogging {
-        events(TestLogEvent.PASSED, TestLogEvent.SKIPPED, TestLogEvent.FAILED)
+    withType<PublishPluginTask> {
+        token.set(prop("intellijPublishToken"))
+        channels.set(listOf(prop("intellijPublishChannels")))
+    }
+
+    create("printVersion") {
+        doLast {
+            val version: String by project
+            println(version)
+        }
     }
 }
 
-tasks.withType<PublishTask> {
-    token(prop("intellijPublishToken") ?: "unknown")
-    channels(prop("intellijPublishChannels") ?: "")
-}
-
-tasks.create("printVersion") {
-    doLast {
-        val version: String by project
-        println(version)
-    }
-}
-
-fun prop(name: String): String? =
-    extra.properties[name] as? String
+fun prop(name: String) = extra.properties[name] as? String ?: ""
