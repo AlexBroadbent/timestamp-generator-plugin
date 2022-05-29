@@ -51,5 +51,7 @@ enum class TimestampFormatTitle(val title: String) {
     RFC_1123_DATE_TIME("RFC11123 Date Time"),
     ISO_ZONED_DATE_TIME("ISO Zoned Date Time"),
     EPOCH_SECONDS("Epoch Seconds"),
-    EPOCH_MILLISECONDS("Epoch Milliseconds"),
+    EPOCH_MILLISECONDS("Epoch Milliseconds");
+
+    override fun toString() = title
 }
