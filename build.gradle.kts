@@ -22,7 +22,9 @@ dependencies {
 }
 
 intellij {
-    version.set("IC-2018.3")
+    type.set("IC")
+    version.set("2022.1.1")
+    downloadSources.set(true)
     pluginName.set("Timestamp Generator")
     updateSinceUntilBuild.set(false)
 }
@@ -38,6 +40,16 @@ tasks {
         testLogging {
             events(TestLogEvent.PASSED, TestLogEvent.FAILED, TestLogEvent.SKIPPED)
         }
+    }
+
+    patchPluginXml {
+        version.set("0.1.5")
+        sinceBuild.set("143")
+        untilBuild.set("")
+    }
+
+    runPluginVerifier {
+        ideVersions.set(listOf("2020.3.4", "2021.3.3", "2022.1.2"))
     }
 
     withType<PublishPluginTask> {
