@@ -50,7 +50,7 @@ class SettingsForm {
     fun component(): JComponent? = panel
 
     private fun createUIComponents() {
-        formatComboBox = ComboBox(DefaultComboBoxModel<TimestampFormatTitle>(TimestampFormatTitle.values()))
+        formatComboBox = ComboBox(DefaultComboBoxModel(TimestampFormatTitle.values()))
     }
 
     private fun getSelectedFormat(): TimestampFormat =
