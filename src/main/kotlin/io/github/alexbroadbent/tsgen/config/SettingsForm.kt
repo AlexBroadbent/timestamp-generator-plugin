@@ -39,7 +39,8 @@ class SettingsForm {
     private fun updatePreviewLabel() {
         val previewSettings = TimestampGeneratorSettings()
         applyConfigFormToSettings(previewSettings)
-        previewLabel?.text = TimestampGenerator.generateTimestamp(instant = previewTimestamp, settings = previewSettings)
+        previewLabel?.text =
+            TimestampGenerator.generateTimestamp(instant = previewTimestamp, settings = previewSettings)
     }
 
     fun applyConfigFormToSettings(settings: TimestampGeneratorSettings) {
