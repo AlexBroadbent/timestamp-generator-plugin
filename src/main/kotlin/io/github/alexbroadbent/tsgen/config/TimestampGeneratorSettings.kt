@@ -7,6 +7,11 @@ import com.intellij.openapi.components.Storage
 import com.intellij.util.xmlb.XmlSerializerUtil
 import java.time.format.DateTimeFormatter
 
+interface TimestampFormatSettings {
+    fun title(): String
+    fun formatter(): DateTimeFormatter
+}
+
 @State(name = "TimestampSettings", storages = [(Storage("timestamp_generator.xml"))])
 class TimestampGeneratorSettings : PersistentStateComponent<TimestampGeneratorSettings>, TimestampFormatSettings {
 
