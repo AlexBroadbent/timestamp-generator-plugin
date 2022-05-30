@@ -16,7 +16,7 @@ class GenerateToClipboardAction : AnAction() {
     override fun actionPerformed(event: AnActionEvent) {
         val timestamp = TimestampGenerator.generateTimestamp()
 
-        CopyPasteManager.getInstance().setContents(TextTransferable(timestamp))
+        CopyPasteManager.getInstance().setContents(TextTransferable(timestamp as? String))
 
         event.getData(CommonDataKeys.PROJECT)?.let {
             val statusBar = WindowManager.getInstance().getStatusBar(it)

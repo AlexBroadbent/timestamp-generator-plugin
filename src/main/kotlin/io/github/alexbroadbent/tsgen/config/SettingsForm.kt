@@ -11,7 +11,7 @@ import javax.swing.JPanel
 
 class SettingsForm {
 
-    private val previewTimestamp = Instant.ofEpochSecond(1610884800) // 2021-01-17T12:00:00.000Z
+    private val previewTimestamp = Instant.now()
     private val settings = TimestampGeneratorSettings.instance
 
     private var panel: JPanel? = null
@@ -50,7 +50,7 @@ class SettingsForm {
     fun component(): JComponent? = panel
 
     private fun createUIComponents() {
-        formatComboBox = ComboBox(DefaultComboBoxModel<TimestampFormatTitle>(TimestampFormatTitle.values()))
+        formatComboBox = ComboBox(DefaultComboBoxModel(TimestampFormatTitle.values()))
     }
 
     private fun getSelectedFormat(): TimestampFormat =

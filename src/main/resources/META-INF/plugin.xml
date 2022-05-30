@@ -24,6 +24,8 @@
         <li>ISO Instant</li>
         <li>RFC 11123 Date Time</li>
         <li>ISO Zoned Date Time</li>
+        <li>Epoch Seconds</li>
+        <li>Epoch Milliseconds</li>
       </ul>
     ]]></description>
 
@@ -31,6 +33,7 @@
         <b>Changes in version 0.1.5:</b>
         <ul>
             <li>Update versions and dependencies</li>
+            <li>Added Epoch seconds and milliseconds options</li>
         </ul>
         <b>Changes in version 0.1.4:</b>
         <ul>

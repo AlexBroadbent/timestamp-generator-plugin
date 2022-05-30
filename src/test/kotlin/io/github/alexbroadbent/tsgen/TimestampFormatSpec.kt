@@ -30,6 +30,12 @@ class TimestampFormatSpec : BaseSpec({
         should("cover RFC 1123 DateTime format") {
             generate(TimestampFormatTitle.RFC_1123_DATE_TIME) shouldBe "2019-03-18T10:30:20.001234567Z"
         }
+        should("cover Epoch Seconds format") {
+            generate(TimestampFormatTitle.EPOCH_SECONDS) shouldBe "1552905020"
+        }
+        should("cover Epoch Milliseconds format") {
+            generate(TimestampFormatTitle.EPOCH_MILLISECONDS) shouldBe "1552905020001"
+        }
     }
 }) {
 
