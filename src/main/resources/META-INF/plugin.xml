@@ -1,5 +1,5 @@
 <idea-plugin>
-    <id>io.github.alexbroadbent.timestamp-generator-plugin</id>
+    <id>io.ajab.timestamp-generator-plugin</id>
     <name>Timestamp Generator</name>
     <version>0.1.5</version>
     <vendor email="hello@abroadbent.com" url="https://github.com/AlexBroadbent">Alexander Broadbent</vendor>
