@@ -4,7 +4,7 @@ import org.jetbrains.intellij.tasks.PublishPluginTask
 plugins {
     idea
     kotlin("jvm") version "1.6.21"
-    id("org.jetbrains.intellij") version "1.6.0"
+    id("org.jetbrains.intellij") version "1.7.0"
     id("org.jlleitschuh.gradle.ktlint") version "10.3.0"
 }
 
