@@ -4,12 +4,12 @@ import org.jetbrains.intellij.tasks.PublishPluginTask
 plugins {
     idea
     kotlin("jvm") version "1.6.21"
-    id("org.jetbrains.intellij") version "1.6.0"
+    id("org.jetbrains.intellij") version "1.7.0"
     id("org.jlleitschuh.gradle.ktlint") version "10.3.0"
 }
 
 group = "io.github.alexbroadbent"
-version = "0.1.5"
+version = "0.1.6"
 
 repositories {
     mavenCentral()
@@ -43,7 +43,7 @@ tasks {
     }
 
     patchPluginXml {
-        version.set("0.1.5")
+        version.set("0.1.6")
         sinceBuild.set("143")
         untilBuild.set("")
     }

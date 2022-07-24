@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>io.ajab.timestamp-generator-plugin</id>
     <name>Timestamp Generator</name>
-    <version>0.1.5</version>
+    <version>0.1.6</version>
     <vendor email="hello@abroadbent.com" url="https://github.com/AlexBroadbent">Alexander Broadbent</vendor>
 
     <description><![CDATA[
@@ -22,7 +22,7 @@
         <li>ISO Local Time</li>
         <li>ISO Local Date Time</li>
         <li>ISO Instant</li>
-        <li>RFC 11123 Date Time</li>
+        <li>RFC 1123 Date Time</li>
         <li>ISO Zoned Date Time</li>
         <li>Epoch Seconds</li>
         <li>Epoch Milliseconds</li>
@@ -30,6 +30,10 @@
     ]]></description>
 
     <change-notes><![CDATA[
+        <b>Changes in version 0.1.6:</b>
+        <ul>
+            <li>Fix RFC 1123 format</li>
+        </ul>
         <b>Changes in version 0.1.5:</b>
         <ul>
             <li>Update versions and dependencies</li>

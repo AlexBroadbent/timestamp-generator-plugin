@@ -28,7 +28,7 @@ class TimestampFormatSpec : BaseSpec({
             generate(TimestampFormatTitle.ISO_ZONED_DATE_TIME) shouldBe "2019-03-18T10:30:20.001234567Z"
         }
         should("cover RFC 1123 DateTime format") {
-            generate(TimestampFormatTitle.RFC_1123_DATE_TIME) shouldBe "2019-03-18T10:30:20.001234567Z"
+            generate(TimestampFormatTitle.RFC_1123_DATE_TIME) shouldBe "Mon, 18 Mar 2019 10:30:20 GMT"
         }
         should("cover Epoch Seconds format") {
             generate(TimestampFormatTitle.EPOCH_SECONDS) shouldBe "1552905020"

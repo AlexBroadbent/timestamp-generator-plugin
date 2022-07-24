@@ -9,7 +9,7 @@ import io.kotest.core.test.TestCaseOrder
 
 fun settings(
     title: TimestampFormatTitle = TimestampFormatTitle.ISO_8601
-) = TimestampGeneratorSettings.create(TimestampFormatMap.getFormat(title))
+) = TimestampGeneratorSettings().apply { this.format = TimestampFormatMap.getFormat(title) }
 
 abstract class BaseSpec(body: ShouldSpec.() -> Unit = {}) : ShouldSpec(body) {
     override fun testCaseOrder() = TestCaseOrder.Random
