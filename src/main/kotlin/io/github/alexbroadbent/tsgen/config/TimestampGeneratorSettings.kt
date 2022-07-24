@@ -1,9 +1,9 @@
 package io.github.alexbroadbent.tsgen.config
 
 import com.intellij.openapi.components.PersistentStateComponent
-import com.intellij.openapi.components.ServiceManager
 import com.intellij.openapi.components.State
 import com.intellij.openapi.components.Storage
+import com.intellij.openapi.components.service
 import com.intellij.util.xmlb.XmlSerializerUtil
 import java.time.format.DateTimeFormatter
 
@@ -17,9 +17,7 @@ class TimestampGeneratorSettings : PersistentStateComponent<TimestampGeneratorSe
 
     companion object {
         val instance: TimestampGeneratorSettings
-            get() = ServiceManager.getService(TimestampGeneratorSettings::class.java)
-
-        fun create(format: TimestampFormat) = TimestampGeneratorSettings().apply { this.format = format }
+            get() = service()
     }
 
     // default value
