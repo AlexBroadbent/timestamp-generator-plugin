@@ -30,7 +30,7 @@ object TimestampFormatMap {
         TimestampFormatTitle.ISO_LOCAL_TIME to DateTimeFormatter.ISO_LOCAL_TIME.addLocaleAndZone(),
         TimestampFormatTitle.ISO_LOCAL_DATE_TIME to DateTimeFormatter.ISO_LOCAL_DATE_TIME.addLocaleAndZone(),
         TimestampFormatTitle.ISO_INSTANT to DateTimeFormatter.ISO_INSTANT.addLocaleAndZone(),
-        TimestampFormatTitle.RFC_1123_DATE_TIME to DateTimeFormatter.ISO_INSTANT.addLocaleAndZone(),
+        TimestampFormatTitle.RFC_1123_DATE_TIME to DateTimeFormatter.RFC_1123_DATE_TIME.addLocaleAndZone(),
         TimestampFormatTitle.ISO_ZONED_DATE_TIME to DateTimeFormatter.ISO_ZONED_DATE_TIME.addLocaleAndZone(),
         TimestampFormatTitle.EPOCH_SECONDS to EPOCH_SECONDS_FORMATTER.addLocaleAndZone(),
         TimestampFormatTitle.EPOCH_MILLISECONDS to EPOCH_MILLISECONDS_FORMATTER.addLocaleAndZone(),
@@ -48,7 +48,7 @@ enum class TimestampFormatTitle(val title: String) {
     ISO_LOCAL_TIME("ISO Local Time"),
     ISO_LOCAL_DATE_TIME("ISO Local Date Time"),
     ISO_INSTANT("ISO Instant"),
-    RFC_1123_DATE_TIME("RFC11123 Date Time"),
+    RFC_1123_DATE_TIME("RFC1123 Date Time"),
     ISO_ZONED_DATE_TIME("ISO Zoned Date Time"),
     EPOCH_SECONDS("Epoch Seconds"),
     EPOCH_MILLISECONDS("Epoch Milliseconds");
