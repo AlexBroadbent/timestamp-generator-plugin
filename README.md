@@ -3,10 +3,10 @@
 ### A timestamp generator for all Jetbrains IDEs.
 
 
-<p align="center">
-<a href="https://travis-ci.org/AlexBroadbent/timestamp-generator-plugin"><img src="https://travis-ci.org/AlexBroadbent/timestamp-generator-plugin.svg?branch=master"/></a>    
-<a href="https://plugins.jetbrains.com/plugin/13012-timestamp-generator"><img src="https://img.shields.io/jetbrains/plugin/d/13012-timestamp-generator.svg"/></a>
-</p>
+![Build](https://github.com/AlexBroadbent/timestamp-generator-plugin/workflows/Build/badge.svg)
+![Version](https://img.shields.io/jetbrains/plugin/v/13012)
+![Downloads](https://img.shields.io/jetbrains/plugin/d/13012)
+![Rating](https://img.shields.io/jetbrains/plugin/r/rating/13012)
 
 ---
 
