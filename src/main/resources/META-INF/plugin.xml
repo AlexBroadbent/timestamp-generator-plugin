@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>io.ajab.timestamp-generator-plugin</id>
     <name>Timestamp Generator</name>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <vendor email="hello@abroadbent.com" url="https://github.com/AlexBroadbent">Alexander Broadbent</vendor>
 
     <description><![CDATA[
@@ -30,7 +30,7 @@
     ]]></description>
 
     <change-notes><![CDATA[
-        <b>Changes in version 1.0.0:</b>
+        <b>Changes in version 1.0.1:</b>
         <ul>
             <li>Fix RFC 1123 format</li>
         </ul>

@@ -9,7 +9,7 @@ plugins {
 }
 
 group = "io.github.alexbroadbent"
-version = "1.0.0"
+version = "1.0.1"
 
 repositories {
     mavenCentral()
@@ -43,7 +43,7 @@ tasks {
     }
 
     patchPluginXml {
-        version.set("1.0.0")
+        version.set("1.0.1")
         sinceBuild.set("143")
         untilBuild.set("")
     }
