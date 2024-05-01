@@ -1,9 +1,8 @@
 package io.github.alexbroadbent.tsgen.config
 
-import com.intellij.openapi.components.PersistentStateComponent
+import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.components.BaseState
 import com.intellij.openapi.components.SimplePersistentStateComponent
-import com.intellij.openapi.components.ServiceManager
 import com.intellij.openapi.components.State
 import com.intellij.openapi.components.Storage
 import java.time.format.DateTimeFormatter
@@ -22,7 +21,7 @@ class TimestampGeneratorSettings : SimplePersistentStateComponent<TimestampForma
 
     companion object {
         val instance: TimestampGeneratorSettings
-            get() = ServiceManager.getService(TimestampGeneratorSettings::class.java)
+            get() = ApplicationManager.getApplication().getService(TimestampGeneratorSettings::class.java)
     }
 
     var format: TimestampFormat
