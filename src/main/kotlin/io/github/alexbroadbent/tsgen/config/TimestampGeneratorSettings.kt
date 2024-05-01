@@ -1,10 +1,11 @@
 package io.github.alexbroadbent.tsgen.config
 
 import com.intellij.openapi.components.PersistentStateComponent
+import com.intellij.openapi.components.BaseState
+import com.intellij.openapi.components.SimplePersistentStateComponent
 import com.intellij.openapi.components.ServiceManager
 import com.intellij.openapi.components.State
 import com.intellij.openapi.components.Storage
-import com.intellij.util.xmlb.XmlSerializerUtil
 import java.time.format.DateTimeFormatter
 
 interface TimestampFormatSettings {
@@ -12,22 +13,23 @@ interface TimestampFormatSettings {
     fun formatter(): DateTimeFormatter
 }
 
+class TimestampFormatState : BaseState() {
+    var format by enum<TimestampFormatTitle>(TimestampFormatTitle.ISO_8601)
+}
+
 @State(name = "TimestampSettings", storages = [(Storage("timestamp_generator.xml"))])
-class TimestampGeneratorSettings : PersistentStateComponent<TimestampGeneratorSettings>, TimestampFormatSettings {
+class TimestampGeneratorSettings : SimplePersistentStateComponent<TimestampFormatState>(TimestampFormatState()), TimestampFormatSettings {
 
     companion object {
         val instance: TimestampGeneratorSettings
             get() = ServiceManager.getService(TimestampGeneratorSettings::class.java)
     }
 
-    // default value
-    var format: TimestampFormat = TimestampFormatMap.ISO_8601
-
-    override fun getState(): TimestampGeneratorSettings = this
-
-    override fun loadState(state: TimestampGeneratorSettings) {
-        XmlSerializerUtil.copyBean(state, this)
-    }
+    var format: TimestampFormat
+        get() = TimestampFormatMap.getFormat(state.format)
+        set(value) {
+            state.format = value.title
+        }
 
     override fun title(): String = format.title.title
 

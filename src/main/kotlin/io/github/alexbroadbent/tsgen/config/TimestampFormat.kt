@@ -14,8 +14,6 @@ class TimestampFormat(
 
 object TimestampFormatMap {
 
-    val ISO_8601 = TimestampFormat(TimestampFormatTitle.ISO_8601, DateTimeFormatter.ISO_DATE_TIME.addLocaleAndZone())
-
     private val EPOCH_SECONDS_FORMATTER = DateTimeFormatterBuilder()
         .appendValue(ChronoField.INSTANT_SECONDS, 1, 19, SignStyle.NEVER)
         .toFormatter()
