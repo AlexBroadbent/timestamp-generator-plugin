@@ -59,5 +59,5 @@ class SettingsForm {
         )
 
     val isModified: Boolean
-        get() = getSelectedFormat() != settings.format
+        get() = getSelectedFormat().title != settings.format.title
 }
